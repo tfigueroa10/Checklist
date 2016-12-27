@@ -17,10 +17,10 @@ class CheckListViewController: UITableViewController {
     var row4text = "Eat Ice Cream"
     
     var row0checked = false
-    var row1checked = false
-    var row2checked = false
+    var row1checked = true
+    var row2checked = true
     var row3checked = false
-    var row4checked = false
+    var row4checked = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,81 +36,23 @@ class CheckListViewController: UITableViewController {
         return 5
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-       /* if let cell = tableView.cellForRow(at: indexPath) {
-            var isChecked = false
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
             if indexPath.row == 0 {
                 row0checked = !row0checked
-                isChecked = row0checked
             } else if indexPath.row == 1 {
                 row1checked = !row1checked
-                isChecked = row1checked
             } else if indexPath.row == 2 {
                 row2checked = !row2checked
-                isChecked = row2checked
             } else if indexPath.row == 3 {
                 row3checked = !row3checked
-                isChecked = row3checked
             } else if indexPath.row == 4 {
                 row4checked = !row4checked
-                isChecked = row4checked
             }
-            if isChecked {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
+            configureCheckmark(for: cell, at: indexPath)
         }
-        
-        
-       /* if let cell = tableView.cellForRow(at: indexPath) {
-            if indexPath.row == 0 {
-                row0checked = !row0checked
-                if row0checked {
-                    cell.accessoryType = .checkmark
-                } else {
-                    cell.accessoryType = .none
-                }
-            } else if indexPath.row == 1 {
-                row1checked = !row1checked
-                if row1checked {
-                    cell.accessoryType = .checkmark
-                } else {
-                    cell.accessoryType = .none
-                }
-            } else if indexPath.row == 2 {
-                row2checked = !row2checked
-                if row2checked {
-                    cell.accessoryType = .checkmark
-                   } else {
-                    cell.accessoryType = .none
-                   }
-                } else if indexPath.row == 3 {
-                    row3checked = !row3checked
-                    if row3checked {
-                        cell.accessoryType = .checkmark
-                    } else {
-                        cell.accessoryType = .none
-                }
-                } else if indexPath.row == 4 {
-                    row4checked = !row4checked
-                    if row4checked {
-                        cell.accessoryType = .checkmark
-                    } else {
-                        cell.accessoryType = .none
-                    }
-                }
-        
-        /* if let cell = tableView.cellForRow(at: indexPath) {
-            if cell.accessoryType == .none {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            } */
-        } */
-        
-        tableView.deselectRow(at: indexPath, animated: true) */
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func configureCheckmark(for cell: UITableViewCell,
