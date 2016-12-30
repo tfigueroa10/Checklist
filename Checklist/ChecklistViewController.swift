@@ -13,12 +13,13 @@ class CheckListViewController: UITableViewController {
     //set array var
     var items: [ChecklistItem]
     
-    //connect var to ChecklistItem file
+    /* connect var to ChecklistItem file
     var row0item: ChecklistItem
     var row1item: ChecklistItem
     var row2item: ChecklistItem
     var row3item: ChecklistItem
     var row4item: ChecklistItem
+ */
     
     //init method - no container should be empty in Swift
     required init?(coder aDecoder: NSCoder) {
