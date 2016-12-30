@@ -24,6 +24,7 @@ class CheckListViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
        
         //lets set some data to the array
+        
         items = [ChecklistItem]()
         
         let row0item = ChecklistItem()
@@ -68,11 +69,47 @@ class CheckListViewController: UITableViewController {
 
     //set list to five
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return items.count
+    }
+    
+    func configureText(for cell: UITableViewCell,
+    with item: ChecklistItem) {
+    let label = cell.viewWithTag(1000) as! UILabel
+    label.text = item.text
+    }
+    
+        
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "ChecklistItem", for: indexPath)
+        let item = items[indexPath.row]
+        configureText(for: cell, with: item)
+        configureCheckmark(for: cell, with: item)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            let item = items[indexPath.row]
+            item.toggleChecked()
+            configureCheckmark(for: cell, with: item)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }    
+    
+    func configureCheckmark(for cell: UITableViewCell,
+                            with item: ChecklistItem) {
+        if item.checked {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
     }
     
     //organize data - indexes
-    override func tableView(_ tableView: UITableView,
+   /* override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         //is row checked - select/deselect
         if let cell = tableView.cellForRow(at: indexPath) {
@@ -89,10 +126,11 @@ class CheckListViewController: UITableViewController {
             }
             configureCheckmark(for: cell, at: indexPath)
         }
+    
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func configureCheckmark(for cell: UITableViewCell,
+     func configureCheckmark(for cell: UITableViewCell,
         at indexPath: IndexPath) {
         
         var isChecked = false
@@ -136,7 +174,7 @@ class CheckListViewController: UITableViewController {
         
         configureCheckmark(for: cell, at: indexPath)
         return cell
-    }
+    } */
 
 }
 
