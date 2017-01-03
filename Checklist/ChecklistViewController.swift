@@ -118,7 +118,6 @@ class CheckListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        le, forRowRowAt indexPAth:
             
             if let cell = tableView.cellForRow(at: indexPath) {
             let item = items[indexPath.row]
