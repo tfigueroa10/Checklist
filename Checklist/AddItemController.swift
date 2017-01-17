@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 
+
 class AddItemViewController: UITableViewController {
    
     @IBAction func cancel() {
@@ -22,7 +23,7 @@ class AddItemViewController: UITableViewController {
     @IBAction func done() {
         
     print("Contents of the text field: \(textField.text!)")
-
+        
     dismiss(animated: true, completion: nil)
     }
     
@@ -30,9 +31,10 @@ class AddItemViewController: UITableViewController {
     return nil
     }
     
-    override func viewWillAppear(_ animated: Bool){
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
     }
-    
 }
+
+
