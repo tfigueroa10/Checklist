@@ -12,7 +12,7 @@ import UIKit
 
 
 
-class AddItemViewController: UITableViewController {
+class AddItemViewController: UITableViewController, UITextFieldDelegate {
    
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
@@ -20,6 +20,7 @@ class AddItemViewController: UITableViewController {
     
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBAction func done() {
         
     print("Contents of the text field: \(textField.text!)")
@@ -34,6 +35,19 @@ class AddItemViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let oldText = textField.text! as NSString
+        let newText = oldText.replacingCharacters(in: range, with: string)
+        
+        if newText.length > 0 {
+            doneBarButton.isEnabled = true
+        } else {
+            doneBarButton.isEnabled = false
+        }
+        return true
     }
 }
 

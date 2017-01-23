@@ -110,6 +110,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBarButton" destination="pIJ-zc-rLA" id="Q9I-qA-YLK"/>
                         <outlet property="textField" destination="b35-Cq-Dkp" id="h29-Oc-0ro"/>
                     </connections>
                 </tableViewController>
